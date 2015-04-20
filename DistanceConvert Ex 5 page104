@@ -1,0 +1,49 @@
+//DistanceConvert Ex 5 page104
+import java.util.Scanner;
+
+class  DistanceConvertCal
+{
+	private int feet,yards,miles;
+	void inputDistance()
+	{
+		Scanner scan = new Scanner(System.in);
+		System.out.print("Input feet : ");
+		feet = scan.nextInt();
+		System.out.print("Input yards : ");
+		yards = scan.nextInt();
+		System.out.print("Input miles : ");
+		miles = scan.nextInt();
+	}
+	/*
+	3 feet = 1 yards
+	1,760 yards = 1 miles
+	5280 feet = 1 miles
+    */
+	void convertFeet()
+	{
+		miles += feet/5280;
+		feet = feet%5280;
+		yards += feet/3;
+		feet = feet%3;
+	}
+	void convertYard()
+	{
+		miles += yards/1760;
+		yards = yards%1760;
+	}
+	void printDistance()
+	{
+		System.out.println("Distance = "+feet+" feet "+yards+" yards "+miles+" miles");
+	}
+}
+class DistanceConvert 
+{
+	public static void main(String[] args) 
+	{
+		DistanceConvertCal distanceObj = new DistanceConvertCal();
+		distanceObj.inputDistance();
+		distanceObj.convertFeet();
+		distanceObj.convertYard();
+		distanceObj.printDistance();
+	}
+}
