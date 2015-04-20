@@ -1,0 +1,100 @@
+//Student Ex 2 page 102
+import java.util.*;
+class StudentMain 
+{
+	public static void main(String[] args) 
+	{
+		Scanner scan = new Scanner(System.in);
+		int id ;
+		String name;
+		System.out.print("Enter Student ID : ");
+		id = scan.nextInt();
+		System.out.print("Enter Student Name : ");
+		name = scan.next();
+		Student studentObj = new Student(id,name);
+		for (int i=1;i<=3 ;i++ )
+		{
+			studentObj.getClassDetail();
+		}
+		System.out.println("-------------------------------------------------");
+		System.out.println("ID : "+studentObj.getId()+" Name : "+studentObj.getName());
+		studentObj.printDetail();
+		System.out.println("Weight Cumulative : "+studentObj.getWeightCumulative());
+		System.out.println("Average Degree : "+studentObj.getDegreeAvg());
+	}
+}
+class Student extends Person
+{
+	Scanner scan = new Scanner(System.in);
+	private String classname;
+	private double class_weight,degree,weight_cumulative,degree_cumulative;
+	private ArrayList<String> classname_arr = new ArrayList<String>();
+	private ArrayList<Double> class_weight_arr = new ArrayList<Double>();
+	private ArrayList<Double> degree_arr = new ArrayList<Double>();
+
+	Student(int id,String name)
+	{
+		super(id,name,0);
+	}
+
+	void getClassDetail()
+	{
+		System.out.print("Enter Classname : ");
+		classname = scan.next();
+		classname_arr.add(classname);
+		System.out.print("Enter ClassWeight : ");
+		class_weight = scan.nextDouble();
+		calClassWeight();
+		class_weight_arr.add(class_weight);
+		System.out.print("Enter Dregree : ");
+		degree = scan.nextDouble();
+		calDegreeCumu();
+		degree_arr.add(degree);
+	}
+	void calClassWeight()
+	{
+		weight_cumulative += class_weight;
+	}
+	void calDegreeCumu()
+	{
+		degree_cumulative += degree;
+	}
+	void printDetail()
+	{
+		System.out.println("\tClassname\tWeight\tDregree");
+		for (int i =0;i<3 ;i++ )
+		{
+			System.out.println("\t"+classname_arr.get(i)+"\t\t"+class_weight_arr.get(i)+"\t"+degree_arr.get(i));
+		}
+		
+	}
+	double getDegreeAvg()
+	{
+		return degree_cumulative/weight_cumulative;
+	}
+	double getWeightCumulative()
+	{
+		return weight_cumulative;
+	}
+
+}
+class Person 
+{
+	private int id;
+	private double scorebefore;
+	private String name;
+	Person(int i,String n,double s)
+	{		
+		id = i;
+		name = n;
+		scorebefore = s;
+	}
+	public int getId()
+	{
+		return id;
+	}
+	public String getName()
+	{
+		return name;
+	}
+}
