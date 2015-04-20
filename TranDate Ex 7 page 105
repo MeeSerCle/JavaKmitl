@@ -1,0 +1,45 @@
+//TranDate Ex 7 page 105
+class TranDateMain 
+{
+	public static void main(String[] args) 
+	{
+		TranDate datcal = new TranDate(21,4,2558);
+		System.out.println(datcal.ToThaiDate());
+		System.out.println(datcal.ToEnglishDate());
+	}
+}
+class TranDate
+{
+	private int date,month,year;
+	TranDate(int d,int m,int y)
+	{
+		date = d;
+		month = m;
+		year = y;
+	}
+	String ToThaiDate()
+	{
+		return (Getday()+" "+date+" "+month+" "+year);
+	}
+	String ToEnglishDate()
+	{
+		return (Getday()+", "+month+" "+date+" "+(year-543));
+	}
+	String Getday()
+	{
+		double a = (14-month)/12;
+		double y = (year-543)-a;
+		double m = (month+(12*a))-2;
+		double d = (date+y+(y/4)-(y/100)+(y/400)+((31*m)/12))%7;
+		switch((int)(d))
+		{
+			case 0 : return "Sunday";
+			case 1 : return "Monday";
+			case 2 : return "Tuesday";
+			case 3 : return "Wednesday";
+			case 4 : return "Thuresday";
+			case 5 : return "Firday";
+			default : return "Saternday";
+		}
+	}
+}
