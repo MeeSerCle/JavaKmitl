@@ -1,0 +1,46 @@
+//ATM Ex 4 page 104
+import java.util.Scanner;
+class Atm
+{
+	private int money;
+	public void withdraw(int n)
+	{
+		money = n ;
+	}
+	public boolean checking()
+	{
+		if (money%100==0)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public String banking()
+	{
+		int b100,b500,b1000,a;
+		b1000 = money/1000;
+		a = money%1000;
+		b500 = a/500;
+		a = a%500;
+		b100 = a/100;
+		return ("b1000 = "+b1000+" b500 = "+b500+" b100 = "+b100);
+	}
+}
+class TestAtm 
+{
+	public static void main(String[] args) 
+	{
+		Scanner scan = new Scanner(System.in);
+		System.out.print("Enter money : ");
+		int n = scan.nextInt();
+		Atm x = new Atm();
+		x.withdraw(n);
+		if(x.checking())
+			System.out.println(x.banking());
+		else
+			System.out.println("invalid data");
+	}
+}
