@@ -1,0 +1,51 @@
+//Nursary Ex1 page 102
+import java.util.Scanner;
+class Nursary_student extends Person
+{
+	double mid1,mid2,comparescore;	
+	Nursary_student(int id,String name,double scorebefore,double mid1in,double mid2in)
+	{
+		super(id,name,scorebefore);
+		mid1= mid1in;
+		mid2= mid2in;
+		comparescore = compare(scorebefore,mid1,mid2);
+	}
+	public double compare(double scorebefore,double mid1,double mid2)
+	{
+		return scorebefore-(mid1+mid2)/2;
+	}
+}
+class Nursary1
+{
+	public static void main(String[] args) 
+	{
+		Nursary_student nurs = new Nursary_student(12222,"kim",40,50,55);
+		System.out.println("Name : "+nurs.getName());
+		System.out.println("Scorebefore : "+nurs.getScorebefore());
+		System.out.println("Comparescore : "+nurs.comparescore);
+	}
+}
+class Person 
+{
+	private int id;
+	private double scorebefore;
+	private String name;
+	Person(int i,String n,double s)
+	{		
+		id = i;
+		name = n;
+		scorebefore = s;
+	}
+	public int getId()
+	{
+		return id;
+	}
+	public String getName()
+	{
+		return name;
+	}
+	public double getScorebefore()
+	{
+		return scorebefore;
+	}
+}
