@@ -1,0 +1,37 @@
+//SavingAccount Ex3 page 103
+class DetailAccount 
+{
+	public static void main(String[] args) 
+	{
+		SavingAccount firstAcc = new SavingAccount(20000);
+		SavingAccount secondAcc = new SavingAccount(30000);
+		for (int i = 1;i<=3 ;i++ )
+		{
+			firstAcc.CalMonthlyBal();
+			secondAcc.CalMonthlyBal();
+			firstAcc.PrintBalancd();
+			System.out.print("\t");
+			secondAcc.PrintBalancd();
+			System.out.println();
+		}
+	}
+}
+class SavingAccount
+{
+	double annaulInterestRate = 0.05;
+	private double savingBalance;
+
+	SavingAccount(double moneySet)
+	{
+		savingBalance = moneySet;
+	}
+	
+	void CalMonthlyBal()
+	{
+		savingBalance += savingBalance*annaulInterestRate/12;
+	}
+	void PrintBalancd()
+	{
+		System.out.print(savingBalance);
+	}
+}
