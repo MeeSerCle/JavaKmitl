@@ -1,0 +1,64 @@
+// Saraly Ex 6 pag 104
+import java.util.Scanner;
+class Saraly extends SaralyCal
+{
+	public static void main(String[] args) 
+	{
+		getDetail();
+		printDetail();
+	}
+}
+class SaralyCal
+{
+	
+	private static String name,section;
+	private static int month_saraly,spacial_saraly,rank_salary,before_retire;
+		 
+	static void getDetail()
+	{
+		Scanner scan = new Scanner(System.in);
+		System.out.print("Name : ");
+		name = scan.next();
+		System.out.print("Section : ");
+		section = scan.next();
+		System.out.print("Month-Saraly : ");
+		month_saraly = scan.nextInt();
+		System.out.print("Spacial-Saraly : ");
+		spacial_saraly = scan.nextInt();
+		System.out.print("Rank-Saraly : ");
+		rank_salary = scan.nextInt();
+		System.out.print("TaxRetire : ");
+		before_retire = scan.nextInt();
+	}
+	static void printDetail()
+	{
+		 System.out.println("-----------------------------------------------------\n");
+		 System.out.println("Name : "+name);
+		 System.out.println("Section : "+section);
+		 System.out.println("___Earnings___\t\t\t___Expenses___");
+		 System.out.println("Saraly : "+month_saraly+"\t\t\tTax : "+calTax());
+		 System.out.println("Spacial-Saraly : "+spacial_saraly+"\t\tTaxRetire : "+before_retire);
+		 System.out.println("Rank-Saraly : "+rank_salary);
+		 System.out.println("SumEarnings : "+sumEarn()+"\t\tSumExpenses : "+SumExpense());
+		 System.out.println("TotalEarnings : "+(sumEarn()-SumExpense()));
+		 System.out.println("\n---------------------------------------------------");
+	}
+	
+	static double SumExpense()
+	{
+		return before_retire+calTax();
+	}
+	static int sumEarn()
+	{
+		return month_saraly+spacial_saraly+rank_salary;
+	}
+	static double calTax()
+	{
+		if(month_saraly >= 20000)
+			return month_saraly*0.05;
+		if(month_saraly >= 10000)
+			return month_saraly*0.04;
+		return month_saraly*0.03;
+	}
+
+}
