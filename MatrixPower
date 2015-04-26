@@ -4,37 +4,50 @@ class MatrixPower
 	public static void main(String[] args) 
 	{
 		Scanner scan = new Scanner (System.in);
-		int[][] a = new int[3][3];
-		int[][] b = new int[3][3];
-		int[][] res = new int[3][3];
-		for (int i=0;i<3 ;i++ )
-			for (int j=0;j<3 ;j++ )
+		System.out.print("Dimention : ");
+		int dim = scan.nextInt();
+		System.out.print("Power : ");
+		int powin = scan.nextInt();
+		int[][] a = new int[dim][dim];
+		int[][] b = new int[dim][dim];
+		int[][] res = new int[dim][dim];
+		for (int i=0;i<dim ;i++ )
+			for (int j=0;j<dim ;j++ )
 			{
 				 System.out.print("A["+(i+1)+"]["+(j+1)+"] = ");
 				 int in = scan.nextInt();
 				 a[i][j] = b[i][j] = in;
 			}
-		for(int pow=1;pow<2;pow++)
+		for(int pow=1;pow<powin;pow++)
 		{
-			for (int m=0;m<3 ;m++ )
+			for (int m=0;m<dim ;m++ )
 			{
-				for (int n=0;n<3;n++ )
+				for (int n=0;n<dim;n++ )
 				{
 					int temp = 0;
-					for (int i=0;i<3 ;i++ )
+					for (int i=0;i<dim ;i++ )
 					{
-						temp += a[m][i]*b[n][i];						
+						temp += a[m][i]*b[i][n];						
 					}
 					res[m][n] = temp;
 				}
 			}
-			a = res;
+			for (int i=0;i<dim ;i++ )
+			{
+				for (int j=0;j<dim ;j++ )
+				{
+					a[i][j] = res[i][j];
+				}
+			}
+			//a = res;
+			//System.arraycopy( res, 0, a, 0, res.length );
+			//a = res.clone();
 		}		
-		for (int i=0;i<3 ;i++ )
+		for (int i=0;i<dim ;i++ )
 		{
-			for (int j=0;j<3 ;j++ )
+			for (int j=0;j<dim ;j++ )
 				System.out.print(res[i][j]+" ");
-		System.out.println();
+			System.out.println();
 		}
 	}
 }
